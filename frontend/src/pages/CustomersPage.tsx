@@ -5,10 +5,16 @@ import { PageHeader } from "../components/layout/PageHeader";
 import { Button } from "../components/ui/button";
 import { Input } from "../components/ui/input";
 import { Badge } from "../components/ui/badge";
-import { Table, TableHeader, TableBody, TableHead, TableRow, TableCell } from "../components/ui/table";
+import {
+  Table,
+  TableHeader,
+  TableBody,
+  TableHead,
+  TableRow,
+  TableCell,
+} from "../components/ui/table";
 import { Card } from "../components/ui/card";
 import { User, Building } from "lucide-react";
-import type { CustomerType } from "../types";
 
 const TYPE_OPTIONS: { value: string; label: string }[] = [
   { value: "", label: "All" },
@@ -45,11 +51,7 @@ export default function CustomersPage() {
       <PageHeader
         title="Customers"
         description={`Manage your ${totalCount} customers`}
-        actions={
-          <Button onClick={() => navigate("/customers/new")}>
-            Add Customer
-          </Button>
-        }
+        actions={<Button onClick={() => navigate("/customers/new")}>Add Customer</Button>}
       />
 
       <div className="mt-6">
@@ -68,16 +70,24 @@ export default function CustomersPage() {
               type="search"
               placeholder="Search name, email, phone..."
               value={search}
-              onChange={(e) => { setSearch(e.target.value); setPage(1); }}
+              onChange={(e) => {
+                setSearch(e.target.value);
+                setPage(1);
+              }}
               className="flex-1"
             />
             <select
               value={customerType}
-              onChange={(e) => { setCustomerType(e.target.value); setPage(1); }}
+              onChange={(e) => {
+                setCustomerType(e.target.value);
+                setPage(1);
+              }}
               className="px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-primary"
             >
               {TYPE_OPTIONS.map((o) => (
-                <option key={o.value} value={o.value}>{o.label}</option>
+                <option key={o.value} value={o.value}>
+                  {o.label}
+                </option>
               ))}
             </select>
           </div>
@@ -101,7 +111,7 @@ export default function CustomersPage() {
                 <TableRow key={c.id}>
                   <TableCell>
                     <div className="flex items-center gap-2">
-                      {c.customer_type === 'individual' ? (
+                      {c.customer_type === "individual" ? (
                         <User size={16} className="text-text-secondary" />
                       ) : (
                         <Building size={16} className="text-text-secondary" />
@@ -110,7 +120,7 @@ export default function CustomersPage() {
                     </div>
                   </TableCell>
                   <TableCell>
-                    <Badge variant={c.customer_type === 'individual' ? 'default' : 'secondary'}>
+                    <Badge variant={c.customer_type === "individual" ? "default" : "secondary"}>
                       {c.customer_type}
                     </Badge>
                   </TableCell>
