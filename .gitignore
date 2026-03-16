@@ -132,7 +132,6 @@ celerybeat.pid
 *.sage.py
 
 # Environments
-.env
 .venv
 env/
 venv/
@@ -595,3 +594,4 @@ ansible/inventory.ini
 ansible/*.retry
 ansible/.vault_pass
 ansible/vault_pass.txt
+config.bat
